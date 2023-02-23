@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>分页 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="limit关键字 12345678910111213141516171819@Service@Transactionalpublic class ImplStudentService implements StudentService &amp;#123; @Resourceprivate  StudentDao  studentDao;     @Override    public List&lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分页">
+<meta property="og:url" content="http://example.com/2023/02/23/%E5%88%86%E9%A1%B5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="limit关键字 12345678910111213141516171819@Service@Transactionalpublic class ImplStudentService implements StudentService &amp;#123; @Resourceprivate  StudentDao  studentDao;     @Override    public List&lt;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-23T12:07:27.000Z">
+<meta property="article:modified_time" content="2023-02-23T12:13:11.964Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-分页" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/23/%E5%88%86%E9%A1%B5/" class="article-date">
+  <time datetime="2023-02-23T12:07:27.000Z" itemprop="datePublished">2023-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      分页
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>limit关键字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ImplStudentService</span> <span class="keyword">implements</span> <span class="title class_">StudentService</span> &#123;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span>  StudentDao  studentDao;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Student&gt;  <span class="title function_">selectAllStudent</span><span class="params">(String province, Integer offset, Integer limit)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> studentDao.selectAll(province,offset,limit);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sql语句：</span><br><span class="line">    select * from student <span class="type">where</span> <span class="variable">province</span> <span class="operator">=</span> #&#123;province&#125;  limit #&#123;offset&#125;,#&#123;limit&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>hibernate分页</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> List <span class="title function_">getStudents</span><span class="params">(Integer  pageNo，Integer  pageSize)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"> <span class="comment">// 分页数据</span></span><br><span class="line"> <span class="type">int</span>[] startIdAndCount = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];</span><br><span class="line"> startIdAndCount[<span class="number">0</span>] = pageNo * pageSize;</span><br><span class="line"> startIdAndCount[<span class="number">1</span>] = pageSize;</span><br><span class="line"> <span class="keyword">return</span> studentDao.selectStudentsByPage(startIdAndCount);</span><br><span class="line">&#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> List <span class="title function_">findByHqlPage</span><span class="params">(<span class="type">int</span>[] startIdAndCount)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	<span class="type">String</span> <span class="variable">hql</span> <span class="operator">=</span> <span class="string">&quot;...&quot;</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> getSession().createQuery(hql);</span><br><span class="line">		<span class="comment">// 设置分页</span></span><br><span class="line">		<span class="keyword">if</span> (startIdAndCount != <span class="literal">null</span> &amp;&amp; startIdAndCount.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="type">int</span> <span class="variable">rowStartIdx</span> <span class="operator">=</span> Math.max(<span class="number">0</span>, startIdAndCount[<span class="number">0</span>]);</span><br><span class="line">			<span class="keyword">if</span> (rowStartIdx &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				query.setFirstResult(rowStartIdx);<span class="comment">// 设置开始取值的索引</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (startIdAndCount.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="type">int</span> <span class="variable">rowCount</span> <span class="operator">=</span> Math.max(<span class="number">0</span>, startIdAndCount[<span class="number">1</span>]);</span><br><span class="line">				<span class="keyword">if</span> (rowCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				query.setMaxResults(rowCount);<span class="comment">// 设置结束取值的索引</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> query.list();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (RuntimeException re) &#123;</span><br><span class="line">		log.error(<span class="string">&quot;分页查询失败！&quot;</span>, re);</span><br><span class="line">		<span class="keyword">throw</span> re;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>截取List查询结果分页</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">List&lt;StudentEnroll&gt; students = studentlDao.getAllStudents();</span><br><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(studentEnrolls != <span class="literal">null</span> &amp;&amp; studentEnrolls.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">	count = studentEnrolls.size();</span><br><span class="line">	<span class="type">int</span> <span class="variable">fromIndex</span> <span class="operator">=</span> pageNo * pageSize;</span><br><span class="line">	<span class="type">int</span> <span class="variable">toIndex</span> <span class="operator">=</span> (pageNo + <span class="number">1</span>) * pageSize;</span><br><span class="line">	<span class="keyword">if</span>(toIndex &gt; count) &#123;</span><br><span class="line">		toIndex = count;</span><br><span class="line">	&#125;</span><br><span class="line">	List&lt;StudentEnroll&gt; pageList = studentEnrolls.subList(fromIndex, toIndex);</span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>利用mybatis框架pageHelper插件分页</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/23/%E5%88%86%E9%A1%B5/" data-id="cleh2ffm90000xot82t7ec99g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/02/16/org-springframework-beans-factory-CannotLoadBeanClassException%E7%9A%84%E5%A4%84%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">org.springframework.beans.factory.CannotLoadBeanClassException的处理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/02/23/%E5%88%86%E9%A1%B5/">分页</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/16/org-springframework-beans-factory-CannotLoadBeanClassException%E7%9A%84%E5%A4%84%E7%90%86/">org.springframework.beans.factory.CannotLoadBeanClassException的处理</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/%E6%9C%89%E4%B8%80%E7%82%B9%E8%BF%9B%E6%AD%A5/">有一点进步对吗？</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/12/caomei-hello/">caomei-hello</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/12/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
