@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>interview | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="String、StringBuffer和StringBuilder 的 使用场景   解答：  首先String的底层是一个定长的字符数组，而另外两个是不定长的，所以另外两个可以自由增加和删除字符  2.StringBuffer中的方法 synchronized 关键字进行修饰，所以其是线程安全的，所以适合在多线程环境下使用，而StringBuider没有关键词修饰  而StringBuffer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="interview">
+<meta property="og:url" content="http://example.com/2023/04/29/interview/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="String、StringBuffer和StringBuilder 的 使用场景   解答：  首先String的底层是一个定长的字符数组，而另外两个是不定长的，所以另外两个可以自由增加和删除字符  2.StringBuffer中的方法 synchronized 关键字进行修饰，所以其是线程安全的，所以适合在多线程环境下使用，而StringBuider没有关键词修饰  而StringBuffer">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-29T12:21:28.000Z">
+<meta property="article:modified_time" content="2023-04-30T03:53:36.870Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="面试_笔试">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/04/29/interview/" class="article-date">
+  <time datetime="2023-04-29T12:21:28.000Z" itemprop="datePublished">2023-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      interview
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>String、StringBuffer和StringBuilder 的 使用场景 </li>
+</ol>
+<p>解答：</p>
+<ol>
+<li>首先String的底层是一个定长的字符数组，而另外两个是不定长的，所以另外两个可以自由增加和删除字符</li>
+</ol>
+<p>2.StringBuffer中的方法 synchronized 关键字进行修饰，所以其是线程安全的，所以适合在多线程环境下使用，而StringBuider没有关键词修饰</p>
+<ol start="3">
+<li>而StringBuffer在多线程下使用的话，因为多线程是靠cpu进行切换的，所以会导致运行效率更差</li>
+</ol>
+<p>4.使用环境而言，String适合字符串为定长时使用，其余两个在需要字符串的拼接时使用。</p>
+<ol start="2">
+<li>编写java代码遍历一个List<Integer>中的元素，每遍历一个控制台输出后立即删除</li>
+</ol>
+<p>for (int i = 0; i &lt; list.size(); i++) {</p>
+<p>System.out.println(list.get(I));</p>
+<p>List.remove(i);</p>
+<p>}</p>
+<p>3．访问修饰符public,private,protected,以及不写（默认）时的区别？</p>
+<p>public则是所有类都可以访问</p>
+<p>protected则是对同包和子类都是公开的</p>
+<p>default则是默认时的修饰符，对同包公开，但是对于子类不行</p>
+<p>private则除了本类，其他都是隐藏的！</p>
+<p>4．Integer 和 int 的区别 和 联系。</p>
+<p>\1. 区别 ： Ingeter是int的包装类是一个类 ， int 是基本数据类型，两者默认初值不同。int的初值为0，Ingeter的初值为null</p>
+<p>\2. 联系 ：Integer 类在对象中包装了一个基本类型 int 的值。Integer 类型的对象包含一个 int 类型的字段。</p>
+<p>5 .String str = “a”  str==”a”返回什么 ，两个对象什么情况下用==返回true。</p>
+<p>返回false</p>
+<p>\6.  列举出你知道的 当服务端接收到一条客户端（或者WEB）用户 发送的请求的时候，验证用户请求合法性的方式 </p>
+<p>Jwt，不清楚</p>
+<p>7 如下玩玩家获得道具的记录表 t_item_log</p>
+<table>
+<thead>
+<tr>
+<th>自增主键</th>
+<th>玩家ID</th>
+<th>道具id</th>
+<th>道具改变数量（小于0为消耗）</th>
+<th>记录时间</th>
+<th>玩家等级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>playerid</td>
+<td>itemid</td>
+<td>num</td>
+<td>Time</td>
+<td>level</td>
+</tr>
+<tr>
+<td>int</td>
+<td></td>
+<td>int</td>
+<td>int</td>
+<td>Int64</td>
+<td>int</td>
+</tr>
+</tbody></table>
+<p>（1）查询 2018年 8月 5日 每个玩家消耗道具的数量。</p>
+<p>Select -1 * num from t_item_log where Time = 2018-8-5;</p>
+<p>（2）查询玩家第一次消耗道具ID为1时的玩家等级</p>
+<p>Select level from t_item_Log where num = -1;</p>
+<p>8.</p>
+<p>考试包含M个科目，有学生A，B，C参加，在每一科考试中，第一,第二,第三名分别的X，Y，Z分，其中X,Y,Z为正整数且X&gt;Y&gt;Z。最后A得22分，B与C均得9分，B在语文考试取得第一。求M的值，并问在数学比赛谁得第二名。</p>
+<p>M = 5 ; C得了第二名</p>
+<p>9.</p>
+<p>张三、李四、王五他们知道 箱子里有16张牌：红桃 Q、4、A、黑桃2、7、3、J、8、4草花K、Q、5、4、6 方块A、5。约翰教授从这16张牌中挑出一张牌来，并把这张牌的点数告诉了李四，把这张牌的花色告诉了王五。这时，约翰教授问李四和王五：你们能从已知的点数或花色中推知这张牌是什么牌吗？ 于是，张三听到如下的对话：</p>
+<p>李四：我不知道这张牌。</p>
+<p>王五：我知道你不知道这张牌。</p>
+<p>李四：现在我知道这张牌了。 </p>
+<p>王五：我也知道了。</p>
+<p>听完以上的对话，张三就是什么牌了。 </p>
+<p>请问：这张牌是什么牌？</p>
+<p>方块5</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/04/29/interview/" data-id="clh2vn86f0001eot84pcn9otv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/30/caomei-%E5%88%B7%E9%A2%98-interview/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          caomei_刷题_interview
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/29/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-interviwe/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">caomei刷题日记_interviwe</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 20px;">模拟</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" style="font-size: 10px;">面试_笔试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/30/caomei-%E5%88%B7%E9%A2%98-interview/">caomei_刷题_interview</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/29/interview/">interview</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/29/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-interviwe/">caomei刷题日记_interviwe</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/28/caomei-day02-%E6%A8%A1%E6%8B%9F/">caomei_day02_模拟</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/27/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0day01-%E6%A8%A1%E6%8B%9F/">caomei刷题日记day01_模拟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -64,6 +64,181 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-caomei-刷题-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/04/30/caomei-%E5%88%B7%E9%A2%98-interview/" class="article-date">
+  <time datetime="2023-04-30T03:50:55.000Z" itemprop="datePublished">2023-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/30/caomei-%E5%88%B7%E9%A2%98-interview/">caomei_刷题_interview</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="80-删除有序数组中的重复项-II"><a href="#80-删除有序数组中的重复项-II" class="headerlink" title="80. 删除有序数组中的重复项 II"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/">80. 删除有序数组中的重复项 II</a></h4><p>难度中等784收藏分享切换为英文接收动态反馈</p>
+<p>给你一个有序数组 <code>nums</code> ，请你**<a target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地</a>** 删除重复出现的元素，使得出现次数超过两次的元素<strong>只出现两次</strong> ，返回删除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 </a>修改输入数组</strong> 并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>说明：</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢？</p>
+<p>请注意，输入数组是以<strong>「引用」</strong>方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,1,1,2,2,3]</span><br><span class="line">输出：5, nums = [1,1,2,2,3]</span><br><span class="line">解释：函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3 。 不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [0,0,1,1,1,1,2,3,3]</span><br><span class="line">输出：7, nums = [0,0,1,1,2,3,3]</span><br><span class="line">解释：函数应返回新长度 length = 7, 并且原数组的前五个元素被修改为 0, 0, 1, 1, 2, 3, 3 。 不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 3 * 104</code></li>
+<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
+<li><code>nums</code> 已按升序排列</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length &lt;= <span class="number">2</span>) <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != nums[index-<span class="number">2</span>])</span><br><span class="line">                nums[index++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/04/30/caomei-%E5%88%B7%E9%A2%98-interview/" data-id="clh2vn86a0000eot8f9sm6okk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/04/29/interview/" class="article-date">
+  <time datetime="2023-04-29T12:21:28.000Z" itemprop="datePublished">2023-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/29/interview/">interview</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>String、StringBuffer和StringBuilder 的 使用场景 </li>
+</ol>
+<p>解答：</p>
+<ol>
+<li>首先String的底层是一个定长的字符数组，而另外两个是不定长的，所以另外两个可以自由增加和删除字符</li>
+</ol>
+<p>2.StringBuffer中的方法 synchronized 关键字进行修饰，所以其是线程安全的，所以适合在多线程环境下使用，而StringBuider没有关键词修饰</p>
+<ol start="3">
+<li>而StringBuffer在多线程下使用的话，因为多线程是靠cpu进行切换的，所以会导致运行效率更差</li>
+</ol>
+<p>4.使用环境而言，String适合字符串为定长时使用，其余两个在需要字符串的拼接时使用。</p>
+<ol start="2">
+<li>编写java代码遍历一个List<Integer>中的元素，每遍历一个控制台输出后立即删除</li>
+</ol>
+<p>for (int i = 0; i &lt; list.size(); i++) {</p>
+<p>System.out.println(list.get(I));</p>
+<p>List.remove(i);</p>
+<p>}</p>
+<p>3．访问修饰符public,private,protected,以及不写（默认）时的区别？</p>
+<p>public则是所有类都可以访问</p>
+<p>protected则是对同包和子类都是公开的</p>
+<p>default则是默认时的修饰符，对同包公开，但是对于子类不行</p>
+<p>private则除了本类，其他都是隐藏的！</p>
+<p>4．Integer 和 int 的区别 和 联系。</p>
+<p>\1. 区别 ： Ingeter是int的包装类是一个类 ， int 是基本数据类型，两者默认初值不同。int的初值为0，Ingeter的初值为null</p>
+<p>\2. 联系 ：Integer 类在对象中包装了一个基本类型 int 的值。Integer 类型的对象包含一个 int 类型的字段。</p>
+<p>5 .String str = “a”  str==”a”返回什么 ，两个对象什么情况下用==返回true。</p>
+<p>返回false</p>
+<p>\6.  列举出你知道的 当服务端接收到一条客户端（或者WEB）用户 发送的请求的时候，验证用户请求合法性的方式 </p>
+<p>Jwt，不清楚</p>
+<p>7 如下玩玩家获得道具的记录表 t_item_log</p>
+<table>
+<thead>
+<tr>
+<th>自增主键</th>
+<th>玩家ID</th>
+<th>道具id</th>
+<th>道具改变数量（小于0为消耗）</th>
+<th>记录时间</th>
+<th>玩家等级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>playerid</td>
+<td>itemid</td>
+<td>num</td>
+<td>Time</td>
+<td>level</td>
+</tr>
+<tr>
+<td>int</td>
+<td></td>
+<td>int</td>
+<td>int</td>
+<td>Int64</td>
+<td>int</td>
+</tr>
+</tbody></table>
+<p>（1）查询 2018年 8月 5日 每个玩家消耗道具的数量。</p>
+<p>Select -1 * num from t_item_log where Time = 2018-8-5;</p>
+<p>（2）查询玩家第一次消耗道具ID为1时的玩家等级</p>
+<p>Select level from t_item_Log where num = -1;</p>
+<p>8.</p>
+<p>考试包含M个科目，有学生A，B，C参加，在每一科考试中，第一,第二,第三名分别的X，Y，Z分，其中X,Y,Z为正整数且X&gt;Y&gt;Z。最后A得22分，B与C均得9分，B在语文考试取得第一。求M的值，并问在数学比赛谁得第二名。</p>
+<p>M = 5 ; C得了第二名</p>
+<p>9.</p>
+<p>张三、李四、王五他们知道 箱子里有16张牌：红桃 Q、4、A、黑桃2、7、3、J、8、4草花K、Q、5、4、6 方块A、5。约翰教授从这16张牌中挑出一张牌来，并把这张牌的点数告诉了李四，把这张牌的花色告诉了王五。这时，约翰教授问李四和王五：你们能从已知的点数或花色中推知这张牌是什么牌吗？ 于是，张三听到如下的对话：</p>
+<p>李四：我不知道这张牌。</p>
+<p>王五：我知道你不知道这张牌。</p>
+<p>李四：现在我知道这张牌了。 </p>
+<p>王五：我也知道了。</p>
+<p>听完以上的对话，张三就是什么牌了。 </p>
+<p>请问：这张牌是什么牌？</p>
+<p>方块5</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/04/29/interview/" data-id="clh2vn86f0001eot84pcn9otv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-caomei刷题日记-interviwe" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/04/29/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-interviwe/" class="article-date">
@@ -490,56 +665,12 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/02/12/hello-world/" class="article-date">
-  <time datetime="2023-02-12T10:23:58.528Z" itemprop="datePublished">2023-02-12</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/12/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/02/12/hello-world/" data-id="clegn555b0001pct829159b2g" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
 
 </section>
         
@@ -552,7 +683,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
     </div>
   </div>
 
@@ -562,7 +693,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 20px;">模拟</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+      <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 20px;">模拟</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" style="font-size: 10px;">面试_笔试</a>
     </div>
   </div>
 
@@ -584,6 +715,14 @@
       <ul>
         
           <li>
+            <a href="/2023/04/30/caomei-%E5%88%B7%E9%A2%98-interview/">caomei_刷题_interview</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/29/interview/">interview</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/29/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-interviwe/">caomei刷题日记_interviwe</a>
           </li>
         
@@ -593,14 +732,6 @@
         
           <li>
             <a href="/2023/04/27/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0day01-%E6%A8%A1%E6%8B%9F/">caomei刷题日记day01_模拟</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/13/Java%E6%B3%9B%E5%9E%8B/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/23/%E5%88%86%E9%A1%B5/">分页</a>
           </li>
         
       </ul>
