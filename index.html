@@ -64,6 +64,95 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/05/14/sql/" class="article-date">
+  <time datetime="2023-05-14T05:29:52.000Z" itemprop="datePublished">2023-05-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/14/sql/">sql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SQL-SELECT-DISTINCT-语句"><a href="#SQL-SELECT-DISTINCT-语句" class="headerlink" title="SQL SELECT DISTINCT 语句"></a>SQL SELECT DISTINCT 语句</h2><p>在表中，可能会包含重复值。这并不成问题，不过，有时您也许希望仅仅列出不同（distinct）的值。</p>
+<p>关键词 DISTINCT 用于返回唯一不同的值。</p>
+<h3 id="和-的区别是什么？"><a href="#和-的区别是什么？" class="headerlink" title="#{} 和 ${} 的区别是什么？"></a>#{} 和 ${} 的区别是什么？</h3><p>注：这道题是面试官面试我同事的。</p>
+<p>答：</p>
+<ul>
+<li><code>$&#123;&#125;</code>是 Properties 文件中的变量占位符，它可以用于标签属性值和 sql 内部，属于静态文本替换，比如${driver}会被静态替换为<code>com.mysql.jdbc. Driver</code>。</li>
+<li><code>#&#123;&#125;</code>是 sql 的参数占位符，MyBatis 会将 sql 中的<code>#&#123;&#125;</code>替换为? 号，在 sql 执行前会使用 PreparedStatement 的参数设置方法，按序给 sql 的? 号占位符设置参数值，比如 ps.setInt(0, parameterValue)，<code>#&#123;item.name&#125;</code> 的取值方式为使用反射从参数对象中获取 item 对象的 name 属性值，相当于 <code>param.getItem().getName()</code>。</li>
+</ul>
+<hr>
+<p>现在，我们希望取得 “*****” 列中值的长度。</p>
+<p>我们使用如下 SQL 语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> LEN(City) <span class="keyword">as</span> LengthOfCity <span class="keyword">FROM</span> Persons</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    tweet_id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    Tweets</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">    length(content) <span class="operator">&gt;</span> <span class="number">15</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/14/sql/" data-id="clhnfs9370000mwt87xf96bke" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql%E5%AD%A6%E4%B9%A0/" rel="tag">sql学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-websocket" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/05/11/websocket/" class="article-date">
+  <time datetime="2023-05-11T08:41:03.000Z" itemprop="datePublished">2023-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/11/websocket/">websocket</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/11/websocket/" data-id="clhnfs93b0001mwt8483y2mpy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-swagger" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/05/11/swagger/" class="article-date">
@@ -1362,241 +1451,6 @@
 
 
   
-    <article id="post-interview" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/04/29/interview/" class="article-date">
-  <time datetime="2023-04-29T12:21:28.000Z" itemprop="datePublished">2023-04-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/29/interview/">interview</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>String、StringBuffer和StringBuilder 的 使用场景 </li>
-</ol>
-<p>解答：</p>
-<ol>
-<li>首先String的底层是一个定长的字符数组，而另外两个是不定长的，所以另外两个可以自由增加和删除字符</li>
-</ol>
-<p>2.StringBuffer中的方法 synchronized 关键字进行修饰，所以其是线程安全的，所以适合在多线程环境下使用，而StringBuider没有关键词修饰</p>
-<ol start="3">
-<li>而StringBuffer在多线程下使用的话，因为多线程是靠cpu进行切换的，所以会导致运行效率更差</li>
-</ol>
-<p>4.使用环境而言，String适合字符串为定长时使用，其余两个在需要字符串的拼接时使用。</p>
-<ol start="2">
-<li>编写java代码遍历一个List<Integer>中的元素，每遍历一个控制台输出后立即删除</li>
-</ol>
-<p>for (int i = 0; i &lt; list.size(); i++) {</p>
-<p>System.out.println(list.get(I));</p>
-<p>List.remove(i);</p>
-<p>}</p>
-<p>3．访问修饰符public,private,protected,以及不写（默认）时的区别？</p>
-<p>public则是所有类都可以访问</p>
-<p>protected则是对同包和子类都是公开的</p>
-<p>default则是默认时的修饰符，对同包公开，但是对于子类不行</p>
-<p>private则除了本类，其他都是隐藏的！</p>
-<p>4．Integer 和 int 的区别 和 联系。</p>
-<p>\1. 区别 ： Ingeter是int的包装类是一个类 ， int 是基本数据类型，两者默认初值不同。int的初值为0，Ingeter的初值为null</p>
-<p>\2. 联系 ：Integer 类在对象中包装了一个基本类型 int 的值。Integer 类型的对象包含一个 int 类型的字段。</p>
-<p>5 .String str = “a”  str==”a”返回什么 ，两个对象什么情况下用==返回true。</p>
-<p>返回false</p>
-<p>\6.  列举出你知道的 当服务端接收到一条客户端（或者WEB）用户 发送的请求的时候，验证用户请求合法性的方式 </p>
-<p>Jwt，不清楚</p>
-<p>7 如下玩玩家获得道具的记录表 t_item_log</p>
-<table>
-<thead>
-<tr>
-<th>自增主键</th>
-<th>玩家ID</th>
-<th>道具id</th>
-<th>道具改变数量（小于0为消耗）</th>
-<th>记录时间</th>
-<th>玩家等级</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>playerid</td>
-<td>itemid</td>
-<td>num</td>
-<td>Time</td>
-<td>level</td>
-</tr>
-<tr>
-<td>int</td>
-<td></td>
-<td>int</td>
-<td>int</td>
-<td>Int64</td>
-<td>int</td>
-</tr>
-</tbody></table>
-<p>（1）查询 2018年 8月 5日 每个玩家消耗道具的数量。</p>
-<p>Select -1 * num from t_item_log where Time = 2018-8-5;</p>
-<p>（2）查询玩家第一次消耗道具ID为1时的玩家等级</p>
-<p>Select level from t_item_Log where num = -1;</p>
-<p>8.</p>
-<p>考试包含M个科目，有学生A，B，C参加，在每一科考试中，第一,第二,第三名分别的X，Y，Z分，其中X,Y,Z为正整数且X&gt;Y&gt;Z。最后A得22分，B与C均得9分，B在语文考试取得第一。求M的值，并问在数学比赛谁得第二名。</p>
-<p>M = 5 ; C得了第二名</p>
-<p>9.</p>
-<p>张三、李四、王五他们知道 箱子里有16张牌：红桃 Q、4、A、黑桃2、7、3、J、8、4草花K、Q、5、4、6 方块A、5。约翰教授从这16张牌中挑出一张牌来，并把这张牌的点数告诉了李四，把这张牌的花色告诉了王五。这时，约翰教授问李四和王五：你们能从已知的点数或花色中推知这张牌是什么牌吗？ 于是，张三听到如下的对话：</p>
-<p>李四：我不知道这张牌。</p>
-<p>王五：我知道你不知道这张牌。</p>
-<p>李四：现在我知道这张牌了。 </p>
-<p>王五：我也知道了。</p>
-<p>听完以上的对话，张三就是什么牌了。 </p>
-<p>请问：这张牌是什么牌？</p>
-<p>方块5</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/29/interview/" data-id="clh2vn86f0001eot84pcn9otv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-caomei刷题日记-interviwe" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/04/29/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-interviwe/" class="article-date">
-  <time datetime="2023-04-29T03:03:54.000Z" itemprop="datePublished">2023-04-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/29/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-interviwe/">caomei刷题日记_interviwe</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="88-合并两个有序数组"><a href="#88-合并两个有序数组" class="headerlink" title="88. 合并两个有序数组"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-sorted-array/">88. 合并两个有序数组</a></h4><p>难度简单1848收藏分享切换为英文接收动态反馈</p>
-<p>给你两个按 <strong>非递减顺序</strong> 排列的整数数组 <code>nums1</code> 和 <code>nums2</code>，另有两个整数 <code>m</code> 和 <code>n</code> ，分别表示 <code>nums1</code> 和 <code>nums2</code> 中的元素数目。</p>
-<p>请你 <strong>合并</strong> <code>nums2</code> 到 <code>nums1</code> 中，使合并后的数组同样按 <strong>非递减顺序</strong> 排列。</p>
-<p><strong>注意：</strong>最终，合并后数组不应由函数返回，而是存储在数组 <code>nums1</code> 中。为了应对这种情况，<code>nums1</code> 的初始长度为 <code>m + n</code>，其中前 <code>m</code> 个元素表示应合并的元素，后 <code>n</code> 个元素为 <code>0</code> ，应忽略。<code>nums2</code> 的长度为 <code>n</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3</span><br><span class="line">输出：[1,2,2,3,5,6]</span><br><span class="line">解释：需要合并 [1,2,3] 和 [2,5,6] 。</span><br><span class="line">合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [1], m = 1, nums2 = [], n = 0</span><br><span class="line">输出：[1]</span><br><span class="line">解释：需要合并 [1] 和 [] 。</span><br><span class="line">合并结果是 [1] 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [0], m = 0, nums2 = [1], n = 1</span><br><span class="line">输出：[1]</span><br><span class="line">解释：需要合并的数组是 [] 和 [1] 。</span><br><span class="line">合并结果是 [1] 。</span><br><span class="line">注意，因为 m = 0 ，所以 nums1 中没有元素。nums1 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 nums1 中。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>nums1.length == m + n</code></li>
-<li><code>nums2.length == n</code></li>
-<li><code>0 &lt;= m, n &lt;= 200</code></li>
-<li><code>1 &lt;= m + n &lt;= 200</code></li>
-<li><code>-109 &lt;= nums1[i], nums2[j] &lt;= 109</code></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//其实就是归并排序</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span> m, <span class="type">int</span>[] nums2, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> , j = <span class="number">0</span> ,k = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[m + n];</span><br><span class="line">        <span class="keyword">while</span>(i &lt; m &amp;&amp; j &lt; n)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1[i] &lt; nums2[j])&#123;</span><br><span class="line">                ans[k++] = nums1[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ans[k++] = nums2[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j &lt; n)&#123;</span><br><span class="line">            ans[k++] = nums2[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; m)&#123;</span><br><span class="line">            ans[k++] = nums1[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span> ; l &lt; ans.length ; l++)&#123;</span><br><span class="line">            nums1[l] = ans[l];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27. 移除元素"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/">27. 移除元素</a></h4><p>难度简单1772收藏分享切换为英文接收动态反馈</p>
-<p>给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 移除所有数值等于 <code>val</code> 的元素，并返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须仅使用 <code>O(1)</code> 额外空间并 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 </a>修改输入数组</strong>。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-<p><strong>说明:</strong></p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以<strong>「引用」</strong>方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝</span><br><span class="line">int len = removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,2,2,3], val = 3</span><br><span class="line">输出：2, nums = [2,2]</span><br><span class="line">解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [0,1,2,2,3,0,4,2], val = 2</span><br><span class="line">输出：5, nums = [0,1,4,0,3]</span><br><span class="line">解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>0 &lt;= nums.length &lt;= 100</code></li>
-<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
-<li><code>0 &lt;= val &lt;= 100</code></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 暴力解法</span></span><br><span class="line"><span class="comment">// 时间复杂度：O(n^2)</span></span><br><span class="line"><span class="comment">// 空间复杂度：O(1)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == val) &#123; <span class="comment">// 发现需要移除的元素，就将数组集体向前移动一位</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; size; j++) &#123;</span><br><span class="line">                    nums[j - <span class="number">1</span>] = nums[j];</span><br><span class="line">                &#125;</span><br><span class="line">                i--; <span class="comment">// 因为下标i以后的数值都向前移动了一位，所以i也向前移动一位</span></span><br><span class="line">                size--; <span class="comment">// 此时数组的大小-1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 快慢指针</span></span><br><span class="line"><span class="comment">// 时间复杂度：O(n)</span></span><br><span class="line"><span class="comment">// 空间复杂度：O(1)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> slowIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> fastIndex = <span class="number">0</span>; fastIndex &lt; nums.<span class="built_in">size</span>(); fastIndex++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (val != nums[fastIndex]) &#123;</span><br><span class="line">                nums[slowIndex++] = nums[fastIndex];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slowIndex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 双指针</span></span><br><span class="line">根据题意，我们可以将数组分成「前后」两段：</span><br><span class="line"></span><br><span class="line">前半段是有效部分，存储的是不等于 val 的元素。</span><br><span class="line">后半段是无效部分，存储的是等于 val 的元素。</span><br><span class="line">最终答案返回有效部分的结尾下标。</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= j; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == val) &#123;</span><br><span class="line">                swap(nums, i--, j--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：AC_OIer</span><br><span class="line">链接：https:<span class="comment">//leetcode.cn/problems/remove-element/solution/shua-chuan-lc-shuang-bai-shuang-zhi-zhen-mzt8/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通用解法</span></span><br><span class="line">先设定变量 idx，指向待插入位置。idx 初始值为 <span class="number">0</span></span><br><span class="line"></span><br><span class="line">然后从题目的「要求/保留逻辑」出发，来决定当遍历到任意元素 x 时，应该做何种决策：</span><br><span class="line"></span><br><span class="line">如果当前元素 x 与移除元素 val 相同，那么跳过该元素。</span><br><span class="line">如果当前元素 x 与移除元素 val 不同，那么我们将其放到下标 idx 的位置，并让 idx 自增右移。</span><br><span class="line">最终得到的 idx 即是答案。</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">idx</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> x : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x != val) nums[idx++] = x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> idx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：AC_OIer</span><br><span class="line">链接：https:<span class="comment">//leetcode.cn/problems/remove-element/solution/shua-chuan-lc-shuang-bai-shuang-zhi-zhen-mzt8/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-
-<h4 id="26-删除有序数组中的重复项"><a href="#26-删除有序数组中的重复项" class="headerlink" title="26. 删除有序数组中的重复项"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">26. 删除有序数组中的重复项</a></h4><p>难度简单3140收藏分享切换为英文接收动态反馈</p>
-<p>给你一个 <strong>升序排列</strong> 的数组 <code>nums</code> ，请你**<a target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地</a>** 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。元素的 <strong>相对顺序</strong> 应该保持 <strong>一致</strong> 。然后返回 <code>nums</code> 中唯一元素的个数。</p>
-<p>考虑 <code>nums</code> 的唯一元素的数量为 <code>k</code> ，你需要做以下事情确保你的题解可以被通过：</p>
-<ul>
-<li>更改数组 <code>nums</code> ，使 <code>nums</code> 的前 <code>k</code> 个元素包含唯一元素，并按照它们最初在 <code>nums</code> 中出现的顺序排列。<code>nums</code> 的其余元素与 <code>nums</code> 的大小不重要。</li>
-<li>返回 <code>k</code> 。</li>
-</ul>
-<p><strong>判题标准:</strong></p>
-<p>系统会用下面的代码来测试你的题解:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int[] nums = [...]; // 输入数组</span><br><span class="line">int[] expectedNums = [...]; // 长度正确的期望答案</span><br><span class="line"></span><br><span class="line">int k = removeDuplicates(nums); // 调用</span><br><span class="line"></span><br><span class="line">assert k == expectedNums.length;</span><br><span class="line">for (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">    assert nums[i] == expectedNums[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果所有断言都通过，那么您的题解将被 <strong>通过</strong>。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,1,2]</span><br><span class="line">输出：2, nums = [1,2,_]</span><br><span class="line">解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [0,0,1,1,1,2,2,3,3,4]</span><br><span class="line">输出：5, nums = [0,1,2,3,4]</span><br><span class="line">解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 3 * 104</code></li>
-<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
-<li><code>nums</code> 已按 <strong>升序</strong> 排列</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 双指针</span></span><br><span class="line">一个指针 i 进行数组遍历，另外一个指针 j 指向有效数组的最后一个位置。</span><br><span class="line">只有当 i 所指向的值和 j 不一致（不重复），才将 i 的值添加到 j 的下一位置。</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[j]) &#123;</span><br><span class="line">                nums[++j] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//快慢指针</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> <span class="number">0</span> ; fast &lt; nums.length ; fast++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fast] != nums[slow])&#123;</span><br><span class="line">                nums[++slow] = nums[fast];</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/29/caomei%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-interviwe/" data-id="clh1irx6g0000not89nl17gf2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1615,7 +1469,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/" rel="tag">股票问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E9%97%AE%E9%A2%98/" rel="tag">贪心问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql%E5%AD%A6%E4%B9%A0/" rel="tag">sql学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/" rel="tag">股票问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E9%97%AE%E9%A2%98/" rel="tag">贪心问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
     </div>
   </div>
 
@@ -1625,7 +1479,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">学习</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 15px;">模拟</a> <a href="/tags/%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/" style="font-size: 10px;">股票问题</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E9%97%AE%E9%A2%98/" style="font-size: 10px;">贪心问题</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" style="font-size: 10px;">面试_笔试</a>
+      <a href="/tags/sql%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">sql学习</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">学习</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 15px;">模拟</a> <a href="/tags/%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/" style="font-size: 10px;">股票问题</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E9%97%AE%E9%A2%98/" style="font-size: 10px;">贪心问题</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" style="font-size: 10px;">面试_笔试</a>
     </div>
   </div>
 
@@ -1647,6 +1501,14 @@
       <ul>
         
           <li>
+            <a href="/2023/05/14/sql/">sql</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/11/websocket/">websocket</a>
+          </li>
+        
+          <li>
             <a href="/2023/05/11/swagger/">swagger</a>
           </li>
         
@@ -1656,14 +1518,6 @@
         
           <li>
             <a href="/2023/05/08/caomei-ajax/">caomei_ajax</a>
-          </li>
-        
-          <li>
-            <a href="/2023/05/07/caomei-%E8%B4%AA%E5%BF%83/">caomei_贪心</a>
-          </li>
-        
-          <li>
-            <a href="/2023/05/04/caomei-%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%9801/">caomei_刷题日记_股票问题01</a>
           </li>
         
       </ul>
