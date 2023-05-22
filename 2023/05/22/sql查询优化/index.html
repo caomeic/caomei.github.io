@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>sql查询优化 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="应尽量避免在 where 子句中使用 !&#x3D; 或 &lt;&gt; 操作符，否则将引擎放弃使用索引而进行全表扫描 对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引 应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num is null  可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql查询优化">
+<meta property="og:url" content="http://example.com/2023/05/22/sql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="应尽量避免在 where 子句中使用 !&#x3D; 或 &lt;&gt; 操作符，否则将引擎放弃使用索引而进行全表扫描 对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引 应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num is null  可">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-22T07:17:25.000Z">
+<meta property="article:modified_time" content="2023-05-22T07:27:06.576Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="sql">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sql查询优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/05/22/sql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/" class="article-date">
+  <time datetime="2023-05-22T07:17:25.000Z" itemprop="datePublished">2023-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sql查询优化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>应尽量避免在 <code>where</code> 子句中使用 <code>!=</code> 或 <code>&lt;&gt;</code> 操作符，否则将引擎放弃使用索引而进行全表扫描</li>
+<li>对查询进行优化，应尽量避免全表扫描，首先应考虑在 <code>where</code> 及 <code>order by</code> 涉及的列上建立索引</li>
+<li>应尽量避免在 <code>where</code> 子句中对字段进行 <code>null</code> 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：<code>select id from t where num is null</code></li>
+</ol>
+<p>可以在num列上设置默认值 0 ，确保表中num列没有<code>null</code>值，然后这样查询：<code>select id from t where num=0</code></p>
+<ol start="4">
+<li>尽量避免在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，如：<code>select id from t where num=10 or num=20</code></li>
+</ol>
+<p>可以这样查询：<code>select id from t where num=10 union all select id from t where num=20</code></p>
+<ol start="5">
+<li><p>下面的模糊查询也将导致全表扫描：<code>select id from t where name like ‘%c%’</code><br>若要提高效率，可以使用向左匹配 <code>select id from t where name like c%</code> (不能前置百分号)，或者考虑全文检索。</p>
+</li>
+<li><p><code>in</code> 和 <code>not in</code> 也要慎用，否则会导致全表扫描，如：<code>select id from t where num in(1,2,3)</code><br>对于连续的数值，能用 <code>between</code> 就不要用 <code>in</code> 了：<code>select id from t where num between 1 and 3</code></p>
+</li>
+<li><p>如果在 <code>where </code>子句中使用参数，也会导致全表扫描。因为 SQL 只有在运行时才会解析局部变量，但优化程序不能将访问计划的选择推迟到运行时；它必须在编译时进行选择。然而，如果在编译时建立访问计划，变量的值还是未知的，因而无法作为索引选择的输入项。<br>如下面语句将进行全表扫描：<code>select id from t where num=@num</code><br>可以改为强制查询使用索引：<code>select id from t with(index(索引名)) where num=@num</code></p>
+</li>
+<li><p>应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。<br>如：<code>select id from t where num/2=100</code><br>应改为:<code>select id from t where num=100*2</code></p>
+</li>
+<li><p>应尽量避免在 where 子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。<br>如：<code>select id from t where substring(name,1,3)=’abc&#39;</code><br>生成的id应改为:<code>select id from t where name like ‘abc%’</code><br>如：<code>select id from t where datediff(day,createdate,’2005-11-30′)=’2005-11-30′</code><br>应改为：<code>select id from t where createdate&gt;=’2005-11-30′ and createdate&lt;’2005-12-1′</code></p>
+</li>
+<li><p>不要在 where 子句中的 “=” 左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。</p>
+</li>
+<li><p>在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使 用，并且应尽可能的让字段顺序与索引顺序相一致。</p>
+</li>
+<li><p>不要写一些没有意义的查询，如需要生成一个空表结构：<code>select col1,col2 into t from t where 1=0 </code>，这类代码不会返回任何结果集，但是会消耗系统资源的，应改成这样：<code>create table t(…)</code></p>
+</li>
+<li><p>很多时候用 exists 代替 in 是一个好的选择：<code>select num from a where num in(select num from b)</code><br>用下面的语句替换：<code>select num from a where exists(select 1 from b where num=a.num)</code></p>
+</li>
+<li><p>并不是所有索引对查询都有效，SQL 是根据表中数据来进行查询优化的，当索引列有大量数据重复时，SQL 查询可能不会去利用索引，如一表中有字段<code> sex、male、female</code>几乎各一半，那么即使在 sex 上建了索引也对查询效率起不了作用。</p>
+</li>
+<li><p>索引并不是越多越好，索引固然可以提高相应的 <code>select </code>的效率，但同时也降低了 <code>insert </code>及 <code>update </code>的效率，因为<code>insert</code>或 <code>update </code>时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。一个表的索引数最好不要超过 6 个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。</p>
+</li>
+<li><p>应尽可能的避免更新<code> clustered</code> 索引数据列，因为 <code>clustered </code>索引数据列的顺序就是表记录的物理存储顺序，一旦该列值改变将导致整个表记录的顺序的调整，会耗费相当大的资源。若应用系统需要频繁更新 <code>clustered </code>索引数据列，那么需要考虑是否应将该索引建为<code> clustered</code> 索引。</p>
+</li>
+<li><p>尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。这是因为引擎在处理查询和连接时会 逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了。</p>
+</li>
+<li><p>尽可能的使用 <code>varchar/nvarchar </code>代替 <code>char/nchar </code>，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。</p>
+</li>
+<li><p>任何地方都不要使用<code>select * from t</code>，用具体的字段列表代替<code>“*”</code>，不要返回用不到的任何字段。</p>
+</li>
+<li><p>尽量使用表变量来代替临时表。如果表变量包含大量数据，请注意索引非常有限（只有主键索引）。</p>
+</li>
+<li><p>避免频繁创建和删除临时表，以减少系统表资源的消耗。</p>
+</li>
+<li><p>临时表并不是不可使用，适当地使用它们可以使某些例程更有效，例如，当需要重复引用大型表或常用表中的某个数据集时。但是，对于一次性事件，最好使用导出表。</p>
+</li>
+<li><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 <code>select into </code>代替<code> create table</code>，避免造成大量<code>log</code>，以提高速度；如果数据量不大，为了缓和系统表的资源，应先<code>create table</code>，然后<code>insert</code>。</p>
+</li>
+<li><p>如果使用到了临时表，在存储过程的最后务必将所有的临时表显式删除，先 <code>truncate table </code>，然后<code>drop table</code>，这样可以避免系统表的较长时间锁定。</p>
+</li>
+<li><p>尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过 1 万行，那么就应该考虑改写。</p>
+</li>
+<li><p>使用基于游标的方法或临时表方法之前，应先寻找基于集的解决方案来解决问题，基于集的方法通常更有效。</p>
+</li>
+<li><p>与临时表一样，游标并不是不可使用。对小型数据集使用 <code>FAST_FORWARD </code>游标通常要优于其他逐行处理方法，尤其是在必须引用几个表才能获得所需的数据时。在结果集中包括“合计”的例程通常要比使用游标执行的速度快。如果开发时间允许，基于游标的方法和基于集的方法都可以尝试一下，看哪一种方法的效果更好。</p>
+</li>
+<li><p>在所有的存储过程和触发器的开始处设置 <code>SET NOCOUNT ON</code> ，在结束时设置<code> SET NOCOUNT OFF</code> 。无需在执行存储过程和触发器的每个语句后向客户端发送<code>DONE_IN_PROC</code>消息。</p>
+</li>
+<li><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。</p>
+</li>
+<li><p>尽量避免大事务操作，提高系统并发能力。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/22/sql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/" data-id="clhyiydnn00007ct85hwa2npo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/05/19/mybatis%E9%80%9A%E7%94%A8mapper%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mybatis通用mapper的使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql%E5%AD%A6%E4%B9%A0/" rel="tag">sql学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/" rel="tag">股票问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E9%97%AE%E9%A2%98/" rel="tag">贪心问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" rel="tag">面试_笔试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">sql学习</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">学习</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 15px;">模拟</a> <a href="/tags/%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/" style="font-size: 10px;">股票问题</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E9%97%AE%E9%A2%98/" style="font-size: 10px;">贪心问题</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95-%E7%AC%94%E8%AF%95/" style="font-size: 10px;">面试_笔试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/22/sql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/">sql查询优化</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/19/mybatis%E9%80%9A%E7%94%A8mapper%E7%9A%84%E4%BD%BF%E7%94%A8/">mybatis通用mapper的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/15/caomei-docker01/">caomei_docker01</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/14/sql/">sql</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/11/websocket/">websocket</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
